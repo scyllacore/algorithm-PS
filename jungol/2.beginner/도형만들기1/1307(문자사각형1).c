@@ -1,0 +1,24 @@
+#include <stdio.h>
+int main(void) {
+	int arr[100][100];
+	int i, j, num = 0;
+	int result = 65;
+	scanf("%d", &num);
+
+	for (i = num-1; i >=0; i--) {
+		for (j = num-1; j >=0; j--) {
+			arr[j][i] = result++;
+			if (result > 90)
+				result = 65;
+		}
+	}
+
+	for (i = 0; i < num; i++) {
+		for (j = 0; j < num; j++)
+		{
+			printf("%c ", arr[i][j]);
+		}
+		printf("\n");
+	}
+	return (0);
+}

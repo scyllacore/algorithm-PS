@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+int n;
+
+int nOcStack[14] = { 0 };
+int inputLotto[14] = { 0 };
+int outputLotto[14] = { 0 };
+int top = 0;
+
+
+void dice(int depth)
+{
+	int i;
+
+	if (top > 5)
+	{
+		for (i = 0; i < 6; i++)
+		{
+			printf("%d ", outputLotto[i]);
+		}
+		printf("\n");
+		return;
+	}
+
+	for (i = nOcStack[depth - 1] + 1; i <= n; i++)
+	{
+		nOcStack[depth] = i;
+		outputLotto[top++] = inputLotto[nOcStack[depth]];
+		dice(depth + 1);
+		top--;
+	}
+}
+
+
+int main() {
+
+	int i;
+	scanf("%d", &n);
+
+	for (i = 1; i <= n; i++)
+	{
+		scanf("%d", &inputLotto[i]);
+	}
+
+	dice(1);
+
+	return 0;
+
+}
