@@ -1,11 +1,14 @@
 #include <iostream>
+#include <cstdbool>
 #include <string>
 #include <stack>
+#include <queue>
 
 using namespace std;
 
 void revOut(stack<char>& revWord)
 {
+
 
 	while (!revWord.empty())
 	{
@@ -13,7 +16,21 @@ void revOut(stack<char>& revWord)
 		revWord.pop();
 	}
 
+	
+
 }
+
+
+void fwdOut(queue<char>& fwdWord){
+
+	while (!fwdWord.empty())
+	{
+		cout << fwdWord.front();
+		fwdWord.pop();
+	}
+}
+
+
 
 int main() {
 
@@ -22,6 +39,7 @@ int main() {
 
 	string str;
 	stack<char> revWord;
+	queue<char> fwdWord;
 
 	int i;
 	bool flag = 0;
@@ -30,24 +48,31 @@ int main() {
 
 	for (i = 0; i < str.size(); i++)
 	{
-		if (str[i] == '<') {
-			revOut(revWord);
-			cout << '<';
-			for (; str[++i] != '>'; ) { cout << str[i]; }
-			cout << '>';
+		if (str.at(i) == '<') { flag = 1 , revOut(revWord);}
+
+		if (flag == 1) {
+			fwdWord.push(str.at(i));
+			if (str.at(i) == '>') {
+				fwdOut(fwdWord);
+				flag = 0;
+			}
 		}
 		else {
-			if (str[i] == ' ') {
+			if (str.at(i) == ' ')
+			{
 				revOut(revWord);
 				cout << ' ';
 			}
 			else {
-				revWord.push(str[i]);
+				revWord.push(str.at(i));
 			}
+
 		}
+
 	}
 
 	revOut(revWord);
+
 
 	return 0;
 }

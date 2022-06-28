@@ -41,6 +41,9 @@ int main()
 		cout << prgNum[i] << ' ';
 	}
 
+	delete[] Num;
+	delete[] prgNum;
+
 }
 
 // 3 5 8 7 일 경우는 5 8 -1 -1

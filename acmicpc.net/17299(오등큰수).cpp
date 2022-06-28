@@ -46,9 +46,10 @@ int main()
 		cout << NGF[i] << ' ';
 	}
 
+	delete[] num;
+	delete[] NGF;
 
 
 }
 
 //변수이름 잘못 사용한 것 같아서 바꿈
-//prgNum이 뭐였드라..

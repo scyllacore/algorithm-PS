@@ -8,21 +8,16 @@ int main()
 	ios::sync_with_stdio(false);
 
 	string str;
-	int alpha[26],i;
+	int alpha[26], i;
 
-
-	for (i = 0; i < 26; i+=2)
-	{
-		alpha[i] = -1;
-		alpha[i+1] = -1;
-	}
+	fill_n(alpha, 26, -1);
 
 	cin >> str;
 
 	for (i = 0; i < str.size(); i++)
 	{
-		if (alpha[str[i] - 97] == -1) {
-			alpha[str[i] - 97] = i;
+		if (alpha[str[i] - 'a'] == -1) {
+			alpha[str[i] - 'a'] = i;
 		}
 	}
 
@@ -30,5 +25,8 @@ int main()
 	{
 		cout << alpha[i] << ' ';
 	}
+
+	return 0;
+
 
 }
