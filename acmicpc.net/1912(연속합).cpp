@@ -23,15 +23,15 @@ int main() {
 	ans = dp[0] = arr[0];
 
 	for (i = 1; i < n; i++) {
-		dp[i] = max(arr[i], dp[i-1] + arr[i]);
+		dp[i] = max(arr[i], dp[i - 1] + arr[i]);
 		ans = max(dp[i], ans);
 	}
 
 	cout << ans;
 
-	delete[] arr,dp;
+	delete[] arr;
+	delete[] dp;
 
 	return 0;
-
 
 }

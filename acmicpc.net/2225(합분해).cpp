@@ -1,7 +1,9 @@
 #include <iostream>
-#define MOD 1000000000 // 나머지는 MOD로 정의해두기
+#define MOD (int)1e9 // 나머지는 MOD로 정의해두기
 
 using namespace std;
+
+long long dp[201][201];
 
 int main() {
 
@@ -10,32 +12,26 @@ int main() {
 	ios::sync_with_stdio(false);
 
 	int N, K;
-	int i, j, k;
+	int i, j;
 
 	cin >> N >> K;
 
-	long long** dp = new long long* [N + 1];
-
-	for (i = 0; i <= N; i++)
+	for (i = 1; i <= 200; i++)
 	{
-		dp[i] = new long long[K + 1];
 		dp[i][1] = 1;
+		dp[1][i] = i;
 	}
 
-	for (j = 2; j <= K; j++)
+	for (i = 2; i <= N; i++)
 	{
-		for (i = 1; i <= N; i++) {
-				
-			dp[i][j] = 1;
-			for (k = i; k >= 1; k--) {
-				dp[i][j] += dp[k][j - 1];
-			}
-			dp[i][j] %= MOD;
+		for (j = 2; j <= K; j++) {
+			dp[i][j] = (dp[i - 1][j] + dp[i][j - 1])%MOD;
 		}
 	}
 
 	cout << dp[N][K];
 
+	return 0;
 }
 
 //자료형 큰거 쓰자 그냥.. 
