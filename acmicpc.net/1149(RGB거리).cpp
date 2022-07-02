@@ -17,7 +17,7 @@ int main() {
 
 	for (i = 0; i <= n; i++) {
 		arr[i] = new int[3];
-		dp[i] = new int[4];
+		dp[i] = new int[3];
 	}
 
 	for (i = 1; i <= n; i++) {
@@ -38,9 +38,10 @@ int main() {
 	cout << *min_element(&dp[n][0], &dp[n][3]);
 
 	for (i = 0; i <= n; i++) {
-		delete[] arr[i], dp[i];
+		delete[] arr[i];
+		delete[] dp[i];
 	}
-	delete[] arr, dp;
-
+	delete[] arr;
+	delete[] dp;
 
 }
