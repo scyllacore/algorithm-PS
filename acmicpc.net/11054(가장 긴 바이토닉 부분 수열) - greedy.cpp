@@ -10,16 +10,16 @@ int main() {
 	cout.tie(NULL);
 	ios::sync_with_stdio(false);
 
-	int n,i,idx,ans=0;
+	int n, i, idx, ans = 0;
 	cin >> n;
 
 	int* arr = new int[n + 1];
 	for (i = 1; i <= n; i++) {
 		cin >> arr[i];
 	}
-	
-	int** dpLen = new int*[2];
-	for (i = 0; i <2; i++) {
+
+	int** dpLen = new int* [2];
+	for (i = 0; i < 2; i++) {
 		dpLen[i] = new int[n + 1];
 	}
 	vector<int> dp;
@@ -35,7 +35,7 @@ int main() {
 			dp[idx] = arr[i];
 		}
 
-		dpLen[0][i] = dp.size();
+		dpLen[0][i] = idx + 1; // dp.size()가 아님. 값이 들어가는 위치를 따져 길이를 알아내야함. 
 	}
 
 	dp.clear();
@@ -50,7 +50,7 @@ int main() {
 			dp[idx] = arr[i];
 		}
 
-		dpLen[1][i] = dp.size();
+		dpLen[1][i] = idx + 1;
 	}
 
 
@@ -58,8 +58,12 @@ int main() {
 		ans = max(dpLen[0][i] + dpLen[1][i], ans);
 	}
 
-	cout << ans-1;
-	delete[] arr, dpLen;
+	cout << ans - 1;
+
+	delete[] dpLen[0];
+	delete[] dpLen[1];
+	delete[] dpLen;
+	delete[] arr;
 	return 0;
 
 }

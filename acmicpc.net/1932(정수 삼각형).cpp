@@ -4,14 +4,14 @@
 using namespace std;
 
 int arr[501][501];
-int dp[501][502] = { {0} };
+int dp[501][501] = { {0} };
 
 int main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 	ios::sync_with_stdio(false);
 
-	int n,i,j,maxVal=0;
+	int n, i, j, maxVal = 0;
 	cin >> n;
 
 	for (i = 1; i <= n; i++) {
@@ -37,7 +37,7 @@ int main() {
 	}
 	*/
 
-	cout << *max_element(&dp[n][1], &dp[n][n+1]); //최댓값 찾는 알고리즘.
+	cout << *max_element(&dp[n][1], &dp[n][n + 1]); //최댓값 찾는 알고리즘.
 	//&dp[n][n] -> &dp[n][n+1]로 바꿈. 마지막 인덱스는 포함을 안하는 것 주의.
 
 

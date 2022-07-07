@@ -23,8 +23,6 @@ int main() {
 	}
 
 
-	//vector<vector<int>> dp(2,vector<int>());
-
 	dp[0][1] = 1;
 	dp[1][n] = 1;
 
@@ -73,7 +71,10 @@ int main() {
 
 	cout << ans - 1;
 
-	delete[] dp, arr;
+	delete[] dp[0];
+	delete[] dp[1];
+	delete[] dp;
+	delete[] arr;
 	return 0;
 
 }
